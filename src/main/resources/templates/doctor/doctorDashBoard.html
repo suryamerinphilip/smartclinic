@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DoctorDashboard</title>
+  <link rel="icon" href="/images/favicon.ico" />
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="/css/adminDashboard.css" />
+  <link rel="stylesheet" href="/css/doctorDashboard.css" />
+  <link rel="stylesheet" href="/css/style.css" />
+
+  <!-- Utility Scripts -->
+  <script defer src="/js/utils/render.js"></script>
+  <script defer src="/js/utils/util.js"></script>
+
+  <!-- Components -->
+  <script defer src="/js/components/header.js"></script>
+  <script defer src="/js/components/footer.js"></script>
+  <script defer src="/js/components/patientRows.js"></script>
+
+  <!-- Services and Main Logic -->
+  <script defer src="/js/services/patientServices.js"></script>
+  <script defer src="/js/doctor/doctorDashboard.js"></script>
+</head>
+
+<body>
+  <div class="container">
+    <div class="wrapper">
+      
+      <!-- Header Injected Dynamically -->
+      <div id="header"></div>
+
+      <!-- Main Dashboard Content -->
+      <main class="main-content">
+        <!-- Search and Filter Section -->
+        <div class="filter-bar">
+          <input type="text" id="searchBar" placeholder="Search by patient name..." />
+          <button class="button adminBtn" id="todayAppointments">Today’s Appointments</button>
+          <input type="date" id="appointmentDate" />
+        </div>
+
+        <!-- Patient Records Table -->
+        <table id="patientTable">
+          <thead>
+            <tr>
+              <th>Patient ID</th>
+              <th>Name</th>
+              <th>Phone</th>
+              <th>Email</th>
+              <th>Prescription</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- Patient rows will be dynamically injected here -->
+          </tbody>
+        </table>
+      </main>
+
+      <!-- Footer Injected Dynamically -->
+      <div id="footer"></div>
+    </div>
+  </div>
+</body>
+</html>

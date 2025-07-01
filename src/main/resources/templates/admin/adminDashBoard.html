@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin DashBoard</title>
+    <link rel="stylesheet" th:href="@{/assets/css/adminDashboard.css}">
+    <link rel="stylesheet" th:href="@{/assets/css/style.css}">
+    <script th:src="@{/js/render.js}" defer></script>
+    <script th:src="@{/js/util.js}" defer></script>
+    <script th:src="@{/js/components/header.js}" defer></script>
+    <script th:src="@{/js/components/footer.js}" defer></script>
+
+</head>
+<body>
+    
+  <div class="container">
+    <div class="wrapper">
+      <!-- Dynamic Header -->
+      <div id="header"></div>
+
+      <!-- Main Content Section -->
+      <main class="main-content">
+        <!-- Search Bar -->
+        <input type="text" id="searchBar" placeholder="search by doctor name" />
+
+        <!-- Filters -->
+        <section class="filters">
+          <select id="sortByTime">
+            <option value="">Sort by Time</option>
+            <option value="asc">Ascending</option>
+            <option value="desc">Descending</option>
+          </select>
+
+          <select id="filterBySpecialty">
+            <option value="">Filter by Specialty</option>
+            <!-- Populate specialties dynamically if needed -->
+            <option value="cardiology">Cardiology</option>
+            <option value="dermatology">Dermatology</option>
+            <option value="pediatrics">Pediatrics</option>
+          </select>
+        </section>
+
+        <!-- Doctor List Container -->
+        <div id="content"></div>
+      </main>
+
+      <!-- Dynamic Footer -->
+      <div id="footer"></div>
+    </div>
+  </div>
+  <div id="modal" class="modal">
+  <span id="closeModal" class="close">&times;</span>
+  <div id="modal-body"></div>
+</div>
+
+<script type="module" src="../js/services/adminDashboard.js" defer></script>
+<script type="module" src="../js/components/doctorCard.js" defer></script>
+
+</body>
+</html>

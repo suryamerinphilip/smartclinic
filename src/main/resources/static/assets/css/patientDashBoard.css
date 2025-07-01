@@ -1,0 +1,83 @@
+/* Doctor Card Actions */
+.card-actions {
+  background-color: #003233;
+  text-align: center;
+  padding: 10px;
+  border-radius: 0 0 10px 10px;
+  transition: background-color 0.3s ease;
+}
+
+.card-actions:hover {
+  background-color: #004545;
+}
+
+/* Ripple Overlay */
+.ripple-overlay {
+  position: fixed;
+  width: 20px;
+  height: 20px;
+  background: rgba(0, 120, 212, 0.3);
+  border-radius: 50%;
+  pointer-events: none;
+  transform: scale(0);
+  animation: rippleAnim 0.6s ease-out forwards;
+  z-index: 9999;
+}
+
+@keyframes rippleAnim {
+  to {
+    transform: scale(12);
+    opacity: 0;
+  }
+}
+
+/* Bottom Pop-Up Modal for Booking */
+.modalApp {
+  position: fixed;
+  bottom: -100%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #ffffff;
+  width: 95%;
+  max-width: 500px;
+  border-radius: 20px 20px 0 0;
+  padding: 20px;
+  box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.2);
+  transition: bottom 0.4s ease;
+  z-index: 1000;
+}
+
+.modalApp.active {
+  bottom: 0;
+}
+
+/* Form Fields in Modal */
+.modalApp input,
+.modalApp select {
+  display: block;
+  width: 90%;
+  margin: 15px auto;
+  padding: 10px;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+}
+
+/* Booking Confirmation Button */
+.book-btn {
+  display: block;
+  width: 90%;
+  margin: 20px auto 0;
+  padding: 12px;
+  background-color: #003233;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: filter 0.2s ease;
+}
+
+.book-btn:hover {
+  filter: brightness(1.2);
+}
