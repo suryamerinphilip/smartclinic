@@ -20,7 +20,7 @@ import java.util.Map;
             Map<String, Object> result = tokenValidationService.validateToken(token, "admin");
 
             if (result.isEmpty()) {
-                return "admin/adminDashboard"; // Thymeleaf will resolve to adminDashboard.html
+                return "admin/adminDashboard";
             } else {
                 return "redirect:/";
             }

@@ -6,10 +6,10 @@
     <link rel="stylesheet" href="./assets/css/index.css">
     <link rel="stylesheet" href="./assets/css/style.css">
     <script src="./js/util.js" defer></script>
-   <script src="./js/render.js" defer></script>
-   <script src="./js/components/header.js" defer></script>
-   <script src="./js/components/footer.js" defer></script>
-    <title>Document</title>
+<!--   <script src="./js/render.js" defer></script>-->
+<!--   <script src="./js/components/header.js" defer></script>-->
+<!--   <script src="./js/components/footer.js" defer></script>-->
+    <title>Smart Clinic</title>
 </head>
 <body>
     
@@ -36,12 +36,28 @@
   </main>
 
   <script>
-    function selectRole(role) {
-      console.log("Role selected:", role);
-      // Additional role handling logic here
-    }
+      function selectRole(role) {
+        console.log("Role selected:", role);
+
+        switch (role) {
+          case 'admin':
+            console.log('Admin role was selected');
+            window.location.href = './pages/admin-login.html';
+            break;
+          case 'doctor':
+            console.log('Doctor role was selected');
+            window.location.href = './pages/doctor-login.html';
+            break;
+          case 'patient':
+            console.log('Patient role was selected');
+            window.location.href = './pages/patient-login.html';
+            break;
+          default:
+            alert('Unknown role selected.');
+        }
+      }
   </script>
- <script type="module" src="../js/services/index.js" defer></script>
+ <script type="module" src="./js/services/index.js" defer></script>
     
 </body>
 </html>
