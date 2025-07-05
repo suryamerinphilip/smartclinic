@@ -5,11 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./assets/css/index.css">
     <link rel="stylesheet" href="./assets/css/style.css">
-    <script src="./js/util.js" defer></script>
+    <!-- <script src="./js/util.js" defer></script>
    <script src="./js/render.js" defer></script>
    <script src="./js/components/header.js" defer></script>
-   <script src="./js/components/footer.js" defer></script>
-    <title>Document</title>
+   <script src="./js/components/footer.js" defer></script> -->
+    <title>Smart Clinic</title>
 </head>
 <body>
     
@@ -38,7 +38,20 @@
   <script>
     function selectRole(role) {
       console.log("Role selected:", role);
-      // Additional role handling logic here
+      switch(role) {
+      case 'admin':
+        window.location.href = '/pages/admin-portal.html';
+        break;
+      case 'patient':
+        window.location.href = '/pages/patient-login.html';
+        break;
+      case 'doctor':
+        window.location.href = '/pages/doctor-login.html';
+        break;
+      default:
+        window.location.href = '/login';
+      
+
     }
   </script>
  <script type="module" src="../js/services/index.js" defer></script>
