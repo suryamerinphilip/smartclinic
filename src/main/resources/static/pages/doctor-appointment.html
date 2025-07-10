@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Doctor Appointments</title>
+  <style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 30px;
+    }
+    .header {
+        margin-bottom: 25px;
+    }
+    .appointment-card {
+        border: 1px solid #ccc;
+        padding: 15px;
+        margin-bottom: 15px;
+        max-width: 600px;
+    }
+    .appointment-card h4 {
+        margin: 0 0 10px 0;
+    }
+    .status-badge {
+        padding: 4px 8px;
+        border-radius: 4px;
+        color: white;
+        font-weight: bold;
+        margin-left: 10px;
+    }
+    .status-0 { background-color: #f39c12; } /* pending */
+    .status-1 { background-color: #27ae60; } /* confirmed */
+    .status-2 { background-color: #c0392b; } /* cancelled */
+  </style>
+</head>
+<body>
+<div class="header">
+  <h2 th:text="'Dr. ' + ${doctor.name} + ' — Appointments'">Doctor Name</h2>
+  <p><strong>Specialty:</strong> <span th:text="${doctor.specialty}">Cardiology</span></p>
+  <p><strong>Email:</strong> <span th:text="${doctor.email}">email@example.com</span></p>
+</div>
+
+<div th:if="${appointments != null}">
+  <div th:each="appt : ${appointments}" class="appointment-card">
+    <h4 th:text="'Patient: ' + ${appt.patient.name}">Patient Name</h4>
+    <p><strong>Date:</strong> <span th:text="${appt.appointmentDate}">2025-07-10</span></p>
+    <p><strong>Time:</strong> <span th:text="${appt.appointmentTimeOnly}">10:30 AM</span> to <span th:text="${appt.endTime}">11:30 AM</span></p>
+    <p>
+      <strong>Status:</strong>
+      <span th:switch="${appt.status}">
+                    <span th:case="0" class="status-badge status-0">Pending</span>
+                    <span th:case="1" class="status-badge status-1">Confirmed</span>
+                    <span th:case="2" class="status-badge status-2">Cancelled</span>
+                    <span th:case="*">Unknown</span>
+                </span>
+    </p>
+  </div>
+</div>
+
+<div th:if="${appointments == null || #lists.isEmpty(appointments)}">
+  <p>No appointments scheduled.</p>
+</div>
+</body>
+</html>

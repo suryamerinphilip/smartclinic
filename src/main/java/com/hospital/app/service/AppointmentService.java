@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.function.Consumer;
 
 @Service
 public class AppointmentService {
@@ -30,7 +31,7 @@ public class AppointmentService {
     public Optional<Appointment> getAppointmentById(Long id) {
         return appointmentRepository.findById(id);
     }
-
+ Consumer
     // Update appointment
     public Optional<Appointment> updateAppointment(Long id, Appointment updatedAppointment) {
         return appointmentRepository.findById(id)

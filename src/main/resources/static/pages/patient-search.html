@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Patient Portal - Find a Doctor</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 30px;
+        }
+        form {
+            max-width: 400px;
+            margin-bottom: 20px;
+        }
+        input[type="text"] {
+            width: 80%;
+            padding: 8px;
+            margin-right: 10px;
+            box-sizing: border-box;
+        }
+        button {
+            padding: 8px 15px;
+            background-color: #2196F3;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0b7dda;
+        }
+        .results {
+            max-width: 600px;
+        }
+        .doctor-card {
+            border: 1px solid #ccc;
+            padding: 15px;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+<h2>🔍 Search Doctor by Name</h2>
+
+<form th:action="@{/patient/search}" method="get">
+    <input type="text" name="name" placeholder="Enter doctor's name..." required />
+    <button type="submit">Search</button>
+</form>
+
+<div class="results" th:if="${doctors}">
+    <h3>Search Results:</h3>
+    <div th:each="doctor : ${doctors}" class="doctor-card">
+        <p><strong>Name:</strong> <span th:text="${doctor.name}"></span></p>
+        <p><strong>Specialty:</strong> <span th:text="${doctor.specialty}"></span></p>
+        <p><strong>Email:</strong> <span th:text="${doctor.email}"></span></p>
+        <p><strong>Phone:</strong> <span th:text="${doctor.phone}"></span></p>
+    </div>
+</div>
+
+<div th:if="${doctors != null && #lists.isEmpty(doctors)}">
+    <p>No doctors found with that name.</p>
+</div>
+</body>
+</html>

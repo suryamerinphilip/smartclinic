@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Add Doctor</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 30px;
+        }
+        form {
+            max-width: 400px;
+            margin: 0 auto;
+        }
+        label {
+            display: block;
+            margin-top: 15px;
+            font-weight: bold;
+        }
+        input[type="text"],
+        input[type="email"],
+        input[type="password"] {
+            width: 100%;
+            padding: 8px;
+            margin-top: 5px;
+            box-sizing: border-box;
+        }
+        button {
+            margin-top: 20px;
+            padding: 10px;
+            width: 100%;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+<h2>Add New Doctor</h2>
+<form th:action="@{/doctors/add}" th:object="${doctor}" method="post">
+    <label for="name">Name:</label>
+    <input type="text" id="name" th:field="*{name}" required />
+
+    <label for="specialty">Specialty:</label>
+    <input type="text" id="specialty" th:field="*{specialty}" />
+
+    <label for="email">Email:</label>
+    <input type="email" id="email" th:field="*{email}" required />
+
+    <label for="password">Password:</label>
+    <input type="password" id="password" th:field="*{password}" required />
+
+    <label for="phone">Phone:</label>
+    <input type="text" id="phone" th:field="*{phone}" pattern="\d{10}" title="Phone number must be 10 digits" required />
+
+    <label for="availableTimes">Available Times:</label>
+    <input type="text" id="availableTimes" th:field="*{availableTimes}" placeholder="Comma-separated, e.g., 9AM-10AM,2PM-4PM" />
+
+    <button type="submit">Add Doctor</button>
+</form>
+</body>
+</html>

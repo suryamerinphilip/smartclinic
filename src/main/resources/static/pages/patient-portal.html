@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Patient Portal - Find a Doctor</title>
+    <link rel="stylesheet" href="../assets/css/style.css" />
+    <style>
+        body {
+          font-family: Arial, sans-serif;
+          padding: 20px;
+        }
+
+        h2 {
+          color: #2a7ae2;
+          margin-bottom: 10px;
+        }
+
+        #searchInput {
+          padding: 10px;
+          width: 100%;
+          max-width: 400px;
+          margin-bottom: 20px;
+        }
+
+        .doctor-card {
+          border: 1px solid #ddd;
+          padding: 15px;
+          margin-bottom: 10px;
+          border-radius: 5px;
+        }
+
+        .no-result {
+          color: red;
+          margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+
+<h2>Find a Doctor</h2>
+<input type="text" id="searchInput" placeholder="Search doctor by name..." />
+
+<div id="doctorList">
+    <!-- Doctor cards will be inserted here -->
+</div>
+
+<script>
+    const doctors =

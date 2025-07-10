@@ -1,61 +1,95 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
 <head>
-    <title>Admin Login</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Admin Portal - Smart Clinic</title>
+    <link rel="stylesheet" href="../assets/css/style.css" />
     <style>
         body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f6f8;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
+          font-family: Arial, sans-serif;
+          padding: 20px;
         }
-        .login-container {
-            background-color: white;
-            padding: 30px;
-            border-radius: 8px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.2);
-        }
+
         h2 {
-            margin-bottom: 20px;
-            text-align: center;
-            color: #333;
+          margin-bottom: 10px;
+          color: #2a7ae2;
         }
-        label, input {
-            display: block;
-            width: 100%;
-            margin-bottom: 15px;
+
+        .form-group {
+          margin-bottom: 15px;
         }
+
+        label {
+          display: block;
+          margin-bottom: 5px;
+          font-weight: 600;
+        }
+
+        input {
+          width: 100%;
+          padding: 8px;
+          box-sizing: border-box;
+        }
+
         button {
-            width: 100%;
-            padding: 10px;
-            background-color: #0066cc;
-            color: white;
-            border: none;
-            border-radius: 4px;
+          background-color: #2a7ae2;
+          color: white;
+          padding: 10px 20px;
+          border: none;
+          cursor: pointer;
+          margin-top: 10px;
         }
-        .error {
-            color: red;
-            text-align: center;
+
+        .success-message {
+          margin-top: 20px;
+          color: green;
         }
     </style>
 </head>
 <body>
-<div class="login-container">
-    <h2>Admin Login</h2>
-    <form th:action="@{/login}" method="post">
-        <label for="username">Username</label>
-        <input type="text" id="username" name="username" required />
 
-        <label for="password">Password</label>
-        <input type="password" id="password" name="password" required />
+<h2>Admin Portal: Add Doctor</h2>
 
-        <button type="submit">Log In</button>
-    </form>
+<form id="addDoctorForm">
+    <div class="form-group">
+        <label for="doctorName">Doctor Name</label>
+        <input type="text" id="doctorName" name="doctorName" required />
+    </div>
 
-    <div th:if="${param.error}" class="error">Invalid username or password.</div>
-    <div th:if="${param.logout}" class="error">You have been logged out.</div>
-</div>
+    <div class="form-group">
+        <label for="specialization">Specialization</label>
+        <input type="text" id="specialization" name="specialization" required />
+    </div>
+
+    <div class="form-group">
+        <label for="email">Doctor Email</label>
+        <input type="email" id="email" name="email" required />
+    </div>
+
+    <div class="form-group">
+        <label for="phone">Phone Number</label>
+        <input type="tel" id="phone" name="phone" required />
+    </div>
+
+    <button type="submit">Add Doctor</button>
+    <div id="success" class="success-message"></div>
+</form>
+
+<script>
+    document.getElementById("addDoctorForm").addEventListener("submit", function(event) {
+      event.preventDefault();
+
+      // Simulated form submission
+      const doctorName = document.getElementById("doctorName").value;
+      const specialization = document.getElementById("specialization").value;
+
+      document.getElementById("success").textContent = `✅ Doctor ${doctorName} (${specialization}) added successfully!`;
+
+      // You can integrate this with a backend POST request here
+      // Example: fetch("/api/doctors", { method: "POST", body: formData });
+    });
+</script>
+
 </body>
 </html>
