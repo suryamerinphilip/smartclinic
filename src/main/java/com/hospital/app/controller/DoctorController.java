@@ -42,6 +42,32 @@ public class DoctorController {
                 .orElse(ResponseEntity.notFound().build());
     }
 
+    @GetMapping("/availability/{user}/{doctorId}/{date}/{token}")
+    public ResponseEntity<?> getDoctorAvailability(
+            @PathVariable String user,
+            @PathVariable Long doctorId,
+            @PathVariable @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate date,
+            @PathVariable String token) {
+
+        // ✅ Step 1: Validate token
+        if (!tokenService.isValidForUser(user, token)) {
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED)
+                    .body(Map.of("error", "Invalid token or unauthorized access"));
+        }
+
+        // ✅ Step 2: Fetch availability
+        List<LocalTime> availableSlots = doctorService.getAvailability(doctorId, date);
+
+        // ✅ Step 3: Build structured response
+        Map<String, Object> response = new LinkedHashMap<>();
+        response.put("doctorId", doctorId);
+        response.put("date", date.toString());
+        response.put("availableSlots", availableSlots);
+
+        return ResponseEntity.ok(response);
+    }
+
+
     // DELETE doctor
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteDoctor(@PathVariable Long id) {
