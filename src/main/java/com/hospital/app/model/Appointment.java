@@ -25,6 +25,7 @@ public class Appointment {
     @JoinColumn(name ="patient_id")
 
     private Patient patient;
+    @NotNull
     @Future(message = "Appointment time must be in the future")
     private LocalDateTime appointmentTime;
     private int status;
