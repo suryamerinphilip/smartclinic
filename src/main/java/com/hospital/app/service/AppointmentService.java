@@ -18,7 +18,7 @@ public class AppointmentService {
     }
 
     // Create a new appointment
-    public Appointment createAppointment(Appointment appointment) {
+    public Appointment bookAppointment(Appointment appointment) {
         return appointmentRepository.save(appointment);
     }
 
